@@ -1,0 +1,75 @@
+
+<div id="output"></div>
+<script>
+const printer = {
+    outputElement: document.getElementById('output'),
+    
+    appendMessage: function(message) {
+        if (this.outputElement) {
+            this.outputElement.innerHTML += `${message}<br>`;
+        } else {
+            console.error('Elemento de saída não encontrado!');
+        }
+    },
+
+    appendImage: function(src, alt = '') {
+        if (this.outputElement) {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = alt;
+            img.style.maxWidth = '100%'; // Garante que a imagem não exceda a largura do contêiner
+            this.outputElement.appendChild(img);
+            this.outputElement.innerHTML += '<br>'; // Adiciona quebra de linha após a imagem
+        } else {
+            console.error('Elemento de saída não encontrado!');
+        }
+    },
+
+    appendVideo: function(src, width = 320, height = 240, controls = true) {
+        if (this.outputElement) {
+            const video = document.createElement('video');
+            video.src = src;
+            video.width = width;
+            video.height = height;
+            video.controls = controls;
+            this.outputElement.appendChild(video);
+            this.outputElement.innerHTML += '<br>'; // Adiciona quebra de linha após o vídeo
+        } else {
+            console.error('Elemento de saída não encontrado!');
+        }
+    },
+    
+    clearOutput: function() {
+        if (this.outputElement) {
+            this.outputElement.innerHTML = '';
+        } else {
+            console.error('Elemento de saída não encontrado!');
+        }
+    }
+};
+
+// Função que retorna uma mensagem
+function getMessage() {
+    return '<h1 style="color:red;">Vamos ser capazes!<br><img src="https://i.pinimg.com/474x/27/10/f8/2710f8e3780bf00825def264b362fbaa--indigo-barcelona.jpg"><br>Seja feliz por favor!<br><iframe width="693" height="390" src="https://www.youtube.com/embed/QElogS5kD-4" title="I Have A Dream 🐬 ABBA 🏵️ Extended 🌺 Lyrics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></h1>';
+}
+
+// Exemplo de uso da biblioteca
+printer.appendMessage('A maria é de albufeira.');
+printer.appendMessage(`A maria é de albufeira. ${23 * 23 / 2}`);
+printer.clearOutput(); // Exemplo para limpar a saída, caso necessário
+printer.appendMessage(23*123/45);
+printer.appendMessage('A maria é de albufeira.');
+printer.appendMessage('A maria é de albufeira.<br><h1>Seja feliz por favor!</h1>');
+
+// Usando a função que retorna uma mensagem
+printer.appendMessage(getMessage());
+
+// Carregar uma imagem com uma URL direta
+printer.appendImage('https://www.viajeparaisrael.com.br/site/wp-content/uploads/2018/03/Anjos.jpg', 'imagem de exemplo');
+
+// Carregar um vídeo
+printer.appendVideo('https://www.w3schools.com/html/mov_bbb.mp4');
+</script>
+
+
+
