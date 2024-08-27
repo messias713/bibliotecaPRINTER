@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testando Biblioteca</title>
+</head>
+<body>
+    <div id="output"></div>
+    <script src="./dist/myLibrary.js"></script>
+    <script>
+        printer.setOutputElement('output');
+        printer.appendMessage('Olá, mundo!');
+        printer.appendImage('https://via.placeholder.com/150', 'Imagem de exemplo');
+        printer.appendVideo('https://www.w3schools.com/html/mov_bbb.mp4');
+    </script>
+</body>
+</html>
+
